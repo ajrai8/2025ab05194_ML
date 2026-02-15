@@ -7,22 +7,21 @@ from sklearn.linear_model import LogisticRegression
 from sklearn.tree import DecisionTreeClassifier
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.naive_bayes import GaussianNB
-from sklearn.ensemble import RandossmForestClassifier
-from xgboost import XGBClassifiers
+from sklearn.ensemble import RandomForestClassifier
+from xgboost import XGBClassifier
 from sklearn.metrics import accuracy_score, roc_auc_score, precision_score, recall_score, f1_score, matthews_corrcoef
 
-# 1. Loadings Datasets
+# 1. Loadings Datasetsss
 df = pd.read_csv('../heart.csv')
 
 # 2. Preprocessing
-# The Kaggle dataset usually has 'target' as the labels
 X = df.drop('target', axis=1)
 y = df['target']
 
 # Split data (80% train, 20% test)
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
 
-# Scale features (Critical for KNN and Logistic Regression)
+# Scale features 
 scaler = StandardScaler()
 X_train = scaler.fit_transform(X_train)
 X_test = scaler.transform(X_test)
